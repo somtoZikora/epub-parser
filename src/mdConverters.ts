@@ -30,7 +30,7 @@ export const h = {
     const id = node.getAttribute('id')
 
     if (!id) {
-      return `\n${hPrefix} ${innerHTML}\n\n`
+      return `\n${innerHTML}\n\n`
     }
 
     // 块级元素若保留原标签需添加换行符，否则临近元素渲染会出现问题
@@ -64,9 +64,30 @@ export const div = {
 }
 
 export const img = {
-  filter: ['img'],
+  filter: ['img', 'map'],
 
   replacement: function (innerHTML: string) {
     return `\n[PIC]\n\n`
+  },
+}
+
+export const others = {
+  filter: ['!--...--', '!doctype', 'abbr', 'acronym', 'address', 'applet', 'area',
+    'article', 'aside', 'audio', 'b', 'base', 'basefont', 'bb', 
+    'bdo', 'big', 'blockquote', 'body', 'br', 'button', 'canvas',
+  'caption', 'center', 'cite', 'code', 'col', 'colgroup', 'command',
+'datagrid', 'datalist', 'dd', 'del', 'details', 'dfn', 'dialog',
+'dir', 'div', 'dl', 'dt', 'em', 'embed', 'eventsource', 'fieldset',
+'figcaption', 'figure', 'font', 'footer', 'form', 'frame', 'frameset', 'head',
+'header', 'hgroup', 'hr', 'i', 'iframe', 'input', 'ins', 'isindex', 'kbd',
+'keygen', 'label', 'legend', 'li', 'link', 'mark', 'menu', 'meta',
+'meter', 'noframes', 'object', 'ol', 'optgroup', 'option', 'output',
+'param', 'pre', 'progress', 'q', 'rp', 'rt', 'ruby', 's', 'samp', 'section',
+'select', 'small', 'source', 'strike', 'strong', 'sub', 'sup',
+'table', 'tbody', 'td', 'textarea', 'tfoot', 'th', 'thead', 'time',
+'title', 'tr', 'track', 'tt', 'u', 'ul', 'var', 'wbr'],
+
+  replacement: function (innerHTML: string) {
+    return innerHTML
   },
 }
